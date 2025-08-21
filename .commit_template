@@ -1,0 +1,47 @@
+# <type>: <title> #<issue number>
+
+##### Keep the title on one line with issue number ################### -> |
+
+# Write the body here
+
+########  Keep each line in the body to this line ###################### -> |
+
+# --- COMMIT END ---
+
+# <type> list:
+
+# feat: Feature (introduce new feature)
+
+# fix: Bug (fix a bug)
+
+# refactor: Refactoring (code changes that neither fixes a bug nor adds a feature)
+
+# style: Style (UI or cosmetic changes)
+
+# docs: Documentation (changes or updates to docs)
+
+# test: Tests (add, modify, or delete tests, no business logic changes)
+
+# chore: Chore (miscellaneous updates such as build script changes, dependencies updates)
+
+# perf: Performance (improve performance)
+
+# opt: Optimization (improve code efficiency)
+
+# breaking: Breaking changes (introduce breaking changes)
+
+# init: Initial commit (first commit in a repository)
+
+# ------------------
+
+# Use imperative mood in the title
+
+# Avoid a period (.) at the end of the title
+
+# Separate title from body with a blank line
+
+# In the body, explain "what" and "why" rather than "how"
+
+# Write each sentence in the body and separate with periods.
+
+# ------------------
