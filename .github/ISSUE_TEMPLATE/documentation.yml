@@ -1,0 +1,14 @@
+name: Documentation
+description: Documentation
+title: "doc : "
+labels: ["documentation"]
+body:
+  - type: textarea
+    id: feature
+    attributes:
+      label: Content
+      description: Please describe the parts that have been documented.
+      value: |
+        -
+    validations:
+      required: true
