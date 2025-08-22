@@ -5,3 +5,6 @@ pydantic
 chromadb
 langchain-chroma
 sentence-transformers
+langchain
+langchain-community
+tiktoken
