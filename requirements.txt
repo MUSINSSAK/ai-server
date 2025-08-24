@@ -9,3 +9,6 @@ langchain
 langchain-community
 tiktoken
 langchain-openai
+pandas
+lark
+langchain-huggingface
