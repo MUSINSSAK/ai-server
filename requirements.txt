@@ -11,3 +11,4 @@ tiktoken
 langchain-openai
 pandas
 lark
+langchain-huggingface

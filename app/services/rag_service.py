@@ -1,12 +1,18 @@
 # 1. 라이브러리 임포트
 from langchain_chroma import Chroma
-from langchain_community.embeddings import SentenceTransformerEmbeddings
+from langchain_community.document_loaders.csv_loader import CSVLoader
+
+# from langchain_community.embeddings import SentenceTransformerEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from app.schemas.chat import ChatRequest
 from dotenv import load_dotenv
 
-# 2. CSVLoader를 위한 임포트
-from langchain_community.document_loaders.csv_loader import CSVLoader
+# OpenAI LLM, 프롬프트 템플릿, 체인을 위한 라이브러리
+from langchain_openai import ChatOpenAI
+from langchain_core.prompts import ChatPromptTemplate  # <--- 이 부분이 추가되었습니다.
+from langchain.chains.combine_documents import create_stuff_documents_chain
+from langchain.chains import create_retrieval_chain
 
 load_dotenv()
 
@@ -35,7 +41,7 @@ def initialize_vector_store():
     print(f"✅ Split into {len(docs)} chunks.")
 
     # c. 임베딩 모델 선택 및 초기화
-    embedding_model = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
+    embedding_model = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 
     # d. ChromaDB에 문서 임베딩 및 저장
     VECTOR_STORE = Chroma.from_documents(docs, embedding_model)
