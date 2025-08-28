@@ -78,7 +78,7 @@ def initialize_vector_store():
             ("human", "{input}"),
         ]
     )
-    llm = ChatOpenAI(model="gpt-3.5-turbo")
+    llm = ChatOpenAI(model="gpt-4o")
     retriever = VECTOR_STORE.as_retriever(search_kwargs={"k": 3})
     document_chain = create_stuff_documents_chain(llm, prompt)
     RAG_CHAIN = create_retrieval_chain(retriever, document_chain)
