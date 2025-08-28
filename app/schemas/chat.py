@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from typing import List
 
 
 class ChatRequest(BaseModel):
@@ -7,3 +8,4 @@ class ChatRequest(BaseModel):
 
 class ChatResponse(BaseModel):
     answer: str
+    recommended_ids: List[str]

@@ -18,7 +18,10 @@ def startup_event():
 
 @router.post("/chat", response_model=ChatResponse)
 def chat_with_rag(request: ChatRequest):
-    # 수정: get_rag_answer 함수 호출
-    final_answer = get_rag_answer(request)
+    # 서비스 함수가 이제 딕셔너리를 반환합니다.
+    result = get_rag_answer(request)
 
-    return ChatResponse(answer=final_answer)
+    # 딕셔너리의 각 키를 ChatResponse 모델에 맞게 전달합니다.
+    return ChatResponse(
+        answer=result["answer"], recommended_ids=result["recommended_ids"]
+    )
