@@ -1,0 +1,7 @@
+.git/
+.venv/
+__pycache__/
+*.pyc
+# 모델 캐시 폴더도 제외 (선택 사항)
+~/.cache/torch/hub/
+~/.cache/huggingface/
