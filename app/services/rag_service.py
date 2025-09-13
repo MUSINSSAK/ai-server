@@ -78,12 +78,22 @@ def initialize_vector_store():
             ("human", "{input}"),
         ]
     )
-    llm = ChatOpenAI(model="gpt-3.5-turbo")
+    llm = ChatOpenAI(model="gpt-4o")
     retriever = VECTOR_STORE.as_retriever(search_kwargs={"k": 3})
     document_chain = create_stuff_documents_chain(llm, prompt)
     RAG_CHAIN = create_retrieval_chain(retriever, document_chain)
 
 
-def get_rag_answer(request: ChatRequest) -> str:
+def get_rag_answer(request: ChatRequest) -> dict:  # <-- 반환 타입을 dict로 변경
+    """
+    사용자의 쿼리를 받아 RAG 파이프라인을 실행하고 최종 답변과 ID를 반환합니다.
+    """
     response = RAG_CHAIN.invoke({"input": request.query})
-    return response["answer"]
+
+    # 검색된 문서에서 product_id(source)를 추출합니다.
+    retrieved_ids = [doc.metadata["source"] for doc in response["context"]]
+
+    # 중복을 제거하여 유니크한 ID만 남깁니다.
+    unique_ids = list(dict.fromkeys(retrieved_ids))
+
+    return {"answer": response["answer"], "recommended_ids": unique_ids}
