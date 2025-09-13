@@ -1,9 +1,9 @@
 from fastapi import FastAPI
 from app.api.v1.endpoints import chat
 
-app = FastAPI()
+app = FastAPI(title="AI Server")
 
-app.include_router(chat.router, prefix="/api/v1")
+app.include_router(chat.router, prefix="/api/v1/chat", tags=["Chat"])
 
 
 @app.get("/")

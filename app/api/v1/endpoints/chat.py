@@ -16,10 +16,12 @@ def startup_event():
         )
 
 
-@router.post("/chat", response_model=ChatResponse)
+@router.post("/completions", response_model=ChatResponse)
 def chat_with_rag(request: ChatRequest):
     # 서비스 함수가 이제 딕셔너리를 반환합니다.
     result = get_rag_answer(request)
+
+    print(f"DEBUG: Returning from AI Server: {result}")
 
     # 딕셔너리의 각 키를 ChatResponse 모델에 맞게 전달합니다.
     return ChatResponse(
